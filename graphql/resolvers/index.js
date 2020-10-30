@@ -1,12 +1,14 @@
-const postResolvers = require('./posts.js');
-const userResolvers = require('./users.js');
+const postsResolvers = require('./posts.js');
+const usersResolvers = require('./users.js');
+const commentsResolvers = require('./comments.js');
 
 module.exports = {
     Query: {
-        ...postResolvers.Query
+        ...postsResolvers.Query
     },
     Mutation: {
-        ...userResolvers.Mutation,
-        ...postResolvers.Mutation
+        ...usersResolvers.Mutation,
+        ...postsResolvers.Mutation,
+        ...commentsResolvers.Mutation
     }
 };
