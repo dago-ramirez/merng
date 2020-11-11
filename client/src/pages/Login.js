@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { Button, Form } from 'semantic-ui-react';
 import { useForm } from '../util/hooks.js';
+import { AuthContext } from '../context/auth.js';
 
 export default function Login(props) {
+    const context = useContext(AuthContext);
     const [errors, setErros] = useState({});
 
     const { onChange, onSubmit, values } = useForm(loginUserCallback, {
@@ -13,7 +15,8 @@ export default function Login(props) {
     });
 
     const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-        update(_, result) {
+        update(_, { data: { login: userData } }) {
+            context.login(userData);
             props.history.push('/');
         },
         onError(err) {

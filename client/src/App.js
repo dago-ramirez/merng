@@ -9,17 +9,20 @@ import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Register from './pages/Register.js';
 import MenuBar from './components/MenuBar.js'
+import { AuthProvider } from './context/auth';
 
 function App() {
   return (
-    <Router>
-      <Container>
-        <MenuBar/>
-        <Route exact path="/" component={Home}></Route>
-        <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/register" component={Register}></Route>
-      </Container>      
-    </Router>
+    <AuthProvider >
+      <Router>
+        <Container>
+          <MenuBar/>
+          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/register" component={Register}></Route>
+        </Container>      
+      </Router>
+    </AuthProvider>
   );
 }
 
