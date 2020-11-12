@@ -21,7 +21,7 @@ function App() {
           <MenuBar/>
           <Route exact path="/" component={Home}></Route>
           <AuthRoute exact path="/login" component={Login} />
-          <AuthRoute exact path="/register" component={Register} />>
+          <AuthRoute exact path="/register" component={Register} />
         </Container>      
       </Router>
     </AuthProvider>
