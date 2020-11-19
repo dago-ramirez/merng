@@ -33,7 +33,7 @@ export default function SinglePost(props) {
     if (!getPost) {
         postMarkup = <p>Loading post...</p>
     } else {
-        const { id, body, createdAt, username, comments, likes, likeCount, commentCount } =
+        const { id, body, createdAt, username, likes, likeCount, commentCount } =
             getPost;
 
         postMarkup = (
